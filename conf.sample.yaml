@@ -1,4 +1,4 @@
-# Save this file as config.yaml
+# Save this file as conf.yaml
 status: 'Hej!'
 automatic: true 
 sites:

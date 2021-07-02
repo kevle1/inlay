@@ -7,7 +7,7 @@ from discord_slash.utils.manage_commands import create_option
 
 from util.inspect import process_msg, get_direct_url
 
-with open("config.yaml", "r") as c: cfg = yaml.safe_load(c) 
+with open("conf.yaml", "r") as c: cfg = yaml.safe_load(c) 
 bot = commands.Bot(command_prefix="::")
 slash = SlashCommand(bot, sync_commands=True)
 sites = cfg["sites"]
@@ -17,7 +17,7 @@ sites = cfg["sites"]
              options=[create_option( name="url", description="URL to page with a video\
                                      to embed (Twitter, Reddit)", option_type=3, required=True )])
 async def inlay(ctx, url: str):
-    await ctx.send(content=f"Processing: {url}...")
+    await ctx.send(content=f"Processing: {url}")
     embed = process_msg(url, sites)
 
     if embed:
