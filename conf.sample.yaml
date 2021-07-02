@@ -1,0 +1,15 @@
+# Save this file as config.yaml
+status: 'Hej!'
+automatic: true 
+sites:
+  - name: 'Twitter'
+    active: true 
+    catch: 
+      - 'twitter.com'  
+  - name: 'Reddit'
+    active: true 
+    catch: 
+      - 'reddit.com'
+secrets:
+  discord: 
+    token: 'your_discord_bot_token' 
