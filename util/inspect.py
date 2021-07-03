@@ -16,9 +16,9 @@ platforms = {
     "Reddit": reddit
 }
 
-def process_site(msg, sites, auto=False):
+def process_site(msg, sites):
     try:
-        url = re.search("(?P<url>https?://[^\s]+)", msg).group("url") if auto else msg
+        url = re.search("(?P<url>https?://[^\s]+)", msg).group("url")
 
         split_url = urlsplit(url)
 

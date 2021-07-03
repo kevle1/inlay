@@ -18,6 +18,7 @@ sites = cfg["sites"]
              options=[create_option( name="url", description="URL to page with a video\
                                      to embed", option_type=3, required=True )])
 async def inlay(ctx, url: str):
+    embed = None
     await ctx.send(content=f"Processing: {url}")
     async with ctx.channel.typing():
         site, url = process_site(url, sites)
@@ -33,7 +34,8 @@ if cfg["automatic"]:
     @bot.event
     async def on_message(ctx):
         if not ctx.author == bot.user:
-            site, url = process_site(ctx.content, sites, auto=True)
+            embed = None
+            site, url = process_site(ctx.content, sites)
             if site and url:
                 async with ctx.channel.typing():
                     embed = process_url(url, site)
