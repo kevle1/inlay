@@ -5,7 +5,7 @@ from discord.ext import tasks, commands
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_option
 
-from util.inspect import process_msg
+from util.inspect import process_url, process_site
 
 with open("conf.yaml", "r") as c: cfg = yaml.safe_load(c) 
 bot = commands.Bot(command_prefix="::")
@@ -19,8 +19,10 @@ sites = cfg["sites"]
                                      to embed", option_type=3, required=True )])
 async def inlay(ctx, url: str):
     await ctx.send(content=f"Processing: {url}")
-    embed = process_msg(url, sites, direct=True)
-    
+    async with ctx.channel.typing():
+        site, url = process_site(url, sites)
+        if url:
+            embed = process_url(url, site, direct=True)
     if embed:
         await ctx.channel.send(content=embed)
     else:
@@ -31,9 +33,11 @@ if cfg["automatic"]:
     @bot.event
     async def on_message(ctx):
         if not ctx.author == bot.user:
-            embed = process_msg(ctx.content, sites, True)
-
-            if embed:
+            site, url = process_site(ctx.content, sites, auto=True)
+            if site and url:
+                async with ctx.channel.typing():
+                    embed = process_url(url, site)
+            if embed: 
                 await ctx.channel.send(content=embed)
 
 @bot.event
