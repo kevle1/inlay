@@ -10,7 +10,7 @@ A Discord bot to automatically send playable video embeds following a message fr
 
 ## Tested Sites
 - Twitter
-- Reddit (no audio with direct link due to Reddit handling of videos)
+- Reddit - [No Audio](https://github.com/kevinle-1/inlay/issues/3)
 
 ## Installation & Usage
 
@@ -24,11 +24,3 @@ A Discord bot to automatically send playable video embeds following a message fr
 - Python 3.8+ 
 - See requirements.txt
 - [Discord Bot Token](https://discord.com/developers/applications)
-
-## Todo
-- Improve Error Handling
-- Allow option for any URL supported by youtube-dl
-- Add caching strategy
-- ~~Add Logging (print statements to be removed)~~
-- Send message with the post metadata (Title, description, etc)
-  - Made more extensible on a per site basis 
