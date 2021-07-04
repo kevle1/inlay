@@ -59,7 +59,7 @@ def process_url(url, site, direct=False):
 def extract_info(url):
     logging.debug(f"Getting URL {url} information")
 
-    with youtube_dl.YoutubeDL({"format": "bestvideo/best", "quiet": True}) as ydl:
+    with youtube_dl.YoutubeDL({"format": "bestvideo[ext=mp4]/mp4", "quiet": True}) as ydl:
         try:
             return ydl.extract_info(url, download=False) # Also provides rich metadata info
         except Exception as e:
