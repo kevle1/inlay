@@ -3,7 +3,7 @@ import youtube_dl
 import logging
 import re
 
-from sites.sites import twitter, reddit
+from sites.sites import base, twitter, reddit
 
 logging.basicConfig(filename="process.log",
                     filemode='a',
@@ -39,7 +39,7 @@ def process_site(msg, sites):
 def process_url(url, site, direct=False):
     try:
         if direct and not site:
-            return extract_info(url)["url"]
+            return base(extract_info(url))
         else:
             info = extract_info(url)
             
