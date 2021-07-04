@@ -6,7 +6,7 @@ A Discord bot to automatically send playable video embeds following a message fr
 
 [Demo](https://i.imgur.com/5IVdKO3.mp4)
 
-**Note:** Currently a proof of concept
+**Note:** Currently in Beta
 
 ## Tested Sites
 - Twitter
