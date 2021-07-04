@@ -4,4 +4,6 @@ def twitter(info) -> str:
     return info["url"]
     
 def reddit(info) -> str:
-    return info["url"]
+    for f in info["requested_formats"]:
+        if f["ext"] == "mp4":
+            return f["url"]
