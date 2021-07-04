@@ -1,4 +1,5 @@
 from urllib.parse import urlsplit
+from functools import lru_cache
 import youtube_dl
 import logging
 import re
@@ -36,15 +37,16 @@ def process_site(msg, sites):
             
     return None, None
 
-def process_url(url, site, direct=False):
+@lru_cache(maxsize=None)
+def process_url(url, site_name, direct=False):
     try:
-        if direct and not site:
+        if direct and not site_name:
             return base(extract_info(url))
         else:
             info = extract_info(url)
             
-            if site["name"] in platforms.keys(): # There is a special handler for the URL 
-                embed = platforms[site["name"]](info)
+            if site_name in platforms.keys(): # There is a special handler for the URL 
+                embed = platforms[site_name](info)
             else:
                 embed = info["url"] # Attempt get key "URL"
 
