@@ -4,7 +4,7 @@ import youtube_dl
 import logging
 import re
 
-from sites.sites import base, twitter, reddit
+from sites.sites import general, twitter, reddit
 
 logging.basicConfig(filename="process.log",
                     filemode='a',
@@ -17,9 +17,14 @@ platforms = {
     "Reddit": reddit
 }
 
+# platforms = {
+#     "Twitter": {"handler": twitter, "query": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"},
+#     "Reddit": {"handler": reddit, "query": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"},
+# }
+
 def process_site(msg, sites):
     try:
-        url = re.search("(?P<url>https?://[^\s]+)", msg).group("url")
+        url = re.search(r"(?P<url>https?://[^\s]+)", msg).group("url")
 
         split_url = urlsplit(url)
 
@@ -41,7 +46,7 @@ def process_site(msg, sites):
 def process_url(url, site_name, direct=False):
     try:
         if direct and not site_name:
-            return base(extract_info(url))
+            return general(extract_info(url))
         else:
             info = extract_info(url)
             
