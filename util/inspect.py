@@ -32,7 +32,7 @@ def process_site(msg, sites):
 
         for site in sites:
             if sanitise_base_url(split_url.netloc) in site["catch"]:
-                return site, url
+                return site["name"], url
 
         return None, url
     except AttributeError:

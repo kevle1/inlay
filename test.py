@@ -8,7 +8,7 @@ sites = cfg["sites"]
 def test(url):
     site, url = process_site(url, sites) 
     print(f"SITE {site} URL {url}")
-    embed = process_url(url, site.get("name", None))
+    embed = process_url(url, site)
     print(embed)
 
 def test_direct(url):
@@ -26,3 +26,4 @@ if __name__ == "__main__":
     test("https://www.reddit.com/r/NatureIsFuckingLit/comments/of1spb/iceberg_tsunamis_are_scarier_than_normal_tsunamis/?context=3")
 
     test_direct("https://www.youtube.com/watch?v=P656ZUf7gkU")
+    test_direct("https://youtu.be/CZ3wIuvmHeM")

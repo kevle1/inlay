@@ -1,6 +1,7 @@
 # Save this file as conf.yaml
 status: 'Techy is awesome!'
 automatic: true  # Set if URLs matching the sites will have embeds automatically sent 
+mention: false # Mention author on reply 
 sites:
   - name: 'Twitter'
     active: true

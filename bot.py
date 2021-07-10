@@ -23,7 +23,7 @@ async def inlay(ctx, url: str):
     async with ctx.channel.typing():
         site, url = process_site(url, sites)
         if url:
-            embed = process_url(url, site.get("name", None), direct=True)
+            embed = process_url(url, site, direct=True)
     if embed:
         await ctx.channel.send(content=embed)
     else:
@@ -38,9 +38,9 @@ if cfg["automatic"]:
             site, url = process_site(ctx.content, sites)
             if site and url:
                 async with ctx.channel.typing():
-                    embed = process_url(url, site.get("name", None))
+                    embed = process_url(url, site)
             if embed: 
-                await ctx.channel.send(content=embed)
+                await ctx.reply(embed, mention_author=cfg["mention"])
 
 @bot.event
 async def on_ready():
