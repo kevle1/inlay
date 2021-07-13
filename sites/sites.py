@@ -1,4 +1,5 @@
 # This file contains any site specific logic (e.g. formatting or url retrieval)
+import re
 
 accepted_formats = ["mp4", "webm"]
 
@@ -6,6 +7,11 @@ def twitter(info) -> str:
     return info["url"]
     
 def reddit(info) -> str:
+    for f in info["formats"]:
+        url = f["url"]
+        if re.match(r"https://.*720.mp4", url):
+            return url
+    
     return general(info)
 
 def general(info):

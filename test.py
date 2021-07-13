@@ -24,6 +24,8 @@ if __name__ == "__main__":
 
     test("https://www.reddit.com/r/CitiesSkylines/comments/ocz17t/a_lot_of_hours_gone_into_this_wild_west/")
     test("https://www.reddit.com/r/NatureIsFuckingLit/comments/of1spb/iceberg_tsunamis_are_scarier_than_normal_tsunamis/?context=3")
+    
+    test("https://www.reddit.com/r/Damnthatsinteresting/comments/oj7qcb/lightning_bolt_is_guided_to_ground_through_rocket/")
 
     test_direct("https://www.youtube.com/watch?v=P656ZUf7gkU")
     test_direct("https://youtu.be/CZ3wIuvmHeM")
