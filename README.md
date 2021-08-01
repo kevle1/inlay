@@ -4,7 +4,7 @@
 
 A Discord bot to automatically send playable video embeds following a message from supported sites.
 
-[Demo](https://i.imgur.com/5IVdKO3.mp4)
+[Demo](https://i.imgur.com/3nv6WET.mp4)
 
 **Note:** Currently in Beta
 
