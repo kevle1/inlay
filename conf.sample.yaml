@@ -1,16 +1,18 @@
 # Save this file as conf.yaml
-status: 'Techy is awesome!'
-automatic: true  # Set if URLs matching the sites will have embeds automatically sent 
+status: "julian is cool"
+automatic: true
+reply: true # Reply to message 
 mention: false # Mention author on reply 
+delete: false # Delete original message 
 sites:
-  - name: 'Twitter'
+  - name: "Twitter"
     active: true
     catch:
-      - 'twitter.com'
-  - name: 'Reddit'
+      - "twitter.com"
+  - name: "Reddit"
     active: true
     catch:
-      - 'reddit.com'
+      - "reddit.com"
 secrets:
   discord:
     token: 'your_discord_bot_token'

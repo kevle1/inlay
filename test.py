@@ -29,3 +29,5 @@ if __name__ == "__main__":
 
     test_direct("https://www.youtube.com/watch?v=P656ZUf7gkU")
     test_direct("https://youtu.be/CZ3wIuvmHeM")
+    test_direct("https://preview.redd.it/yvazj1h8dxb71.gif?width=851&format=mp4&s=f927bc782f2c7dc79ce53a0dcae4000e06de1f2b")
+    test("https://www.reddit.com/r/AbruptChaos/comments/oujpqt/leap_of_faith/")

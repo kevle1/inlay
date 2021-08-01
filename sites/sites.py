@@ -1,18 +1,30 @@
 # This file contains any site specific logic (e.g. formatting or url retrieval)
 import re
+import json 
 
-accepted_formats = ["mp4", "webm"]
+accepted_formats = ["mp4", "webm"] # Discord embeddable 
+reddit_url_patterns = [r"https://.*720.mp4", r"https://.*480.mp4", r"https://.*360.mp4", r"https://.*240.mp4"]
 
 def twitter(info) -> str:
-    return info["url"]
+    desc = ""
+
+    # try:
+    #     title = info["title"].replace(f"{info['uploader']} - ", "")
+    #     desc = f">>> **Twitter**\n`{info['uploader']} - @{info['uploader_id']}` - `Likes: {info['like_count']}`\n{title}\n\n"
+    # except KeyError:
+    #     pass
+        
+    return desc + info["url"]
     
 def reddit(info) -> str:
-    for f in info["formats"]:
+    patterns = "(?:%s)" % "|".join(reddit_url_patterns)
+
+    for f in reversed(info["formats"]):
         url = f["url"]
-        if re.match(r"https://.*720.mp4", url):
+        if re.match(patterns, url):
             return url
-    
-    return general(info)
+
+    return general(info) # Fallback
 
 def general(info):
     try:

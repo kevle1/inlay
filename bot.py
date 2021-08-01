@@ -40,7 +40,14 @@ if cfg["automatic"]:
                 async with ctx.channel.typing():
                     embed = process_url(url, site)
             if embed: 
-                await ctx.reply(embed, mention_author=cfg["mention"])
+                # embed = f"Sent by *{ctx.author.nick}*\n" + embed
+                if cfg["reply"]: 
+                    await ctx.reply(embed, mention_author=cfg["mention"])
+                else: 
+                    await ctx.channel.send(content=embed)
+
+                if cfg["delete"]:
+                    await ctx.delete()
 
 @bot.event
 async def on_ready():
