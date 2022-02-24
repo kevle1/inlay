@@ -35,12 +35,14 @@ if cfg["automatic"]:
     async def on_message(ctx):
         if not ctx.author == bot.user:
             embed = None
-            site, url = process_site(ctx.content, sites)
+            site, url, spoiler = process_site(ctx.content, sites)
             if site and url:
                 async with ctx.channel.typing():
                     embed = process_url(url, site)
             if embed: 
                 # embed = f"Sent by *{ctx.author.nick}*\n" + embed
+                if spoiler:
+                    embed = f"||{embed} ||"
                 if cfg["reply"]: 
                     await ctx.reply(embed, mention_author=cfg["mention"])
                 else: 
