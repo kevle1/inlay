@@ -25,6 +25,7 @@ platforms = {
 def process_site(msg, sites):
     try:
         url = re.search(r"(?P<url>https?://[^\s]+)", msg).group("url")
+        spoiler = bool(re.match(fr"\|\|{url}\|\|", msg))
 
         split_url = urlsplit(url)
 
@@ -32,15 +33,15 @@ def process_site(msg, sites):
 
         for site in sites:
             if sanitise_base_url(split_url.netloc) in site["catch"]:
-                return site["name"], url
+                return site["name"], url, spoiler
 
-        return None, url
+        return None, url, spoiler
     except AttributeError:
         pass # URL not found in regex
     except Exception as e:
         logging.error(f"Error: Could not process URL {e}")
             
-    return None, None
+    return None, None, None
 
 @lru_cache(maxsize=None)
 def process_url(url, site_name, direct=False):
