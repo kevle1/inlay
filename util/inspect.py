@@ -1,6 +1,6 @@
 from urllib.parse import urlsplit
 from functools import lru_cache
-import youtube_dl
+import yt_dlp
 import logging
 import re
 
@@ -67,7 +67,7 @@ def process_url(url, site_name, direct=False):
 def extract_info(url):
     logging.debug(f"Getting URL {url} information")
 
-    with youtube_dl.YoutubeDL({"format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4", "quiet": True}) as ydl:
+    with yt_dlp.YoutubeDL({"format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4", "quiet": True}) as ydl:
         try:
             return ydl.extract_info(url, download=False) # Also provides rich metadata info
         except Exception as e:
