@@ -1,5 +1,3 @@
-﻿PyYAML==5.4.1
-discord-py-slash-command==2.2.0
-discord==1.7.3
-urllib3>=1.26.5
-yt-dlp>=2023.7.6
+﻿PyYAML>=6.0.1
+discord>=2.3.2
+yt-dlp>=2023.10.7

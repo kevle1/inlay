@@ -22,7 +22,7 @@ platforms = {
 #     "Reddit": {"handler": reddit, "query": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"},
 # }
 
-def process_site(msg, sites):
+def process_site(msg: str, sites: list):
     try:
         url = re.search(r"(?P<url>https?://[^\s]+)", msg).group("url")
         spoiler = bool(re.match(fr"\|\|{url}\|\|", msg))
@@ -44,12 +44,15 @@ def process_site(msg, sites):
     return None, None, None
 
 @lru_cache(maxsize=None)
-def process_url(url, site_name, direct=False):
+def process_url(url: str, site_name: str, direct: bool=False):
     try:
-        if direct and not site_name:
-            return general(extract_info(url))
+        if site_name == "Twitter": # Use alternate strategy 
+            return twitter(url)
+        
+        if direct and not site_name: # Generic yt-dlp strategy
+            return general(strategy_yt_dlp(url))
         else:
-            info = extract_info(url)
+            info = strategy_yt_dlp(url)
             
             if site_name in platforms.keys(): # There is a special handler for the URL 
                 embed = platforms[site_name](info)
@@ -64,7 +67,7 @@ def process_url(url, site_name, direct=False):
 
     return None
 
-def extract_info(url):
+def strategy_yt_dlp(url: str) -> dict:
     logging.debug(f"Getting URL {url} information")
 
     with yt_dlp.YoutubeDL({"format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4", "quiet": True}) as ydl:

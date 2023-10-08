@@ -5,16 +5,9 @@ import json
 accepted_formats = ["mp4", "webm"] # Discord embeddable 
 reddit_url_patterns = [r"https://.*720.mp4", r"https://.*480.mp4", r"https://.*360.mp4", r"https://.*240.mp4"]
 
-def twitter(info) -> str:
-    desc = ""
-
-    # try:
-    #     title = info["title"].replace(f"{info['uploader']} - ", "")
-    #     desc = f">>> **Twitter**\n`{info['uploader']} - @{info['uploader_id']}` - `Likes: {info['like_count']}`\n{title}\n\n"
-    # except KeyError:
-    #     pass
-        
-    return desc + info["url"]
+def twitter(url: str) -> str:
+    direct_embed_service= "fxtwitter.com"
+    return url.replace("twitter.com", direct_embed_service).replace("t.co", direct_embed_service).replace("x.com", direct_embed_service)
     
 def reddit(info) -> str:
     patterns = "(?:%s)" % "|".join(reddit_url_patterns)

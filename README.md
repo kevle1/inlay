@@ -2,7 +2,7 @@
 
 ![image](https://i.imgur.com/STPnU64s.png)
 
-A Discord bot to automatically send playable video embeds following a message from supported sites.
+A Discord bot to automatically send playable video embeds following a message from supported sites. Uses a variety of strategies to do so. 
 
 [Demo](https://i.imgur.com/3nv6WET.mp4)
 

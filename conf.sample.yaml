@@ -9,6 +9,7 @@ sites:
     active: true
     catch:
       - "twitter.com"
+      - "x.com"
   - name: "Reddit"
     active: true
     catch:
