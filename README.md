@@ -4,12 +4,11 @@
 
 A Discord bot to automatically send playable video embeds following a message from supported sites. Uses a variety of strategies to do so. 
 
-[Demo](https://i.imgur.com/3nv6WET.mp4)
-
-**Note:** Currently in Beta
+[Example](https://i.imgur.com/3nv6WET.mp4)
 
 ## Tested Sites
-- Twitter
+- Twitter/ X
+  - Replies with [FixTweet (fxtwitter.com)](https://github.com/FixTweet/FixTweet) URL
 - Reddit - [No Audio](https://github.com/kevinle-1/inlay/issues/3)
 
 ## Installation & Usage
