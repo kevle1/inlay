@@ -47,7 +47,7 @@ class ParsedSite(BaseModel):
         return hash(self.url)
 
 
-def parse_site(raw_msg: str, sites: list[Site]) -> ParsedSite:
+def parse_site(raw_msg: str, sites: List[Site]) -> ParsedSite:
     try:
         url = re.search(r"(?P<url>https?://[^\s]+)", raw_msg).group("url")
         spoiler = bool(re.match(rf"\|\|{url}\|\|", raw_msg))
