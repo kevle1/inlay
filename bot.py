@@ -50,8 +50,8 @@ if cfg["automatic"]:
                 logging.debug(
                     f"User {ctx.author} sent matching site {parsed_site.name} for URL {parsed_site.url} from guild {ctx.guild.name} - {ctx.guild.id}"
                 )
-                # async with ctx.channel.typing():
-                embed_url = generate_embed(parsed_site)
+                async with ctx.channel.typing():
+                    embed_url = generate_embed(parsed_site)
             if embed_url:
                 logger.debug(f"Generated embed: {embed_url} for site")
                 if parsed_site.spoiler:
