@@ -1,9 +1,9 @@
-# Save this file as conf.yaml
-status: "julian is cool"
+# https://discord.com/oauth2/authorize?client_id=860179105768275999&scope=applications.commands+bot
+status: "bing chilling"
 automatic: true
-reply: true # Reply to message 
-mention: false # Mention author on reply 
-delete: false # Delete original message 
+reply: true # Reply to message
+mention: false # Mention author on reply
+delete: false # Delete original message
 sites:
   - name: "Twitter"
     active: true
@@ -14,6 +14,10 @@ sites:
     active: true
     catch:
       - "reddit.com"
+  - name: "Instagram"
+    active: true
+    catch:
+      - "instagram.com"
 secrets:
   discord:
-    token: 'your_discord_bot_token'
+    token: "mmmm token"
