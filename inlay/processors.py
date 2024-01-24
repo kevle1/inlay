@@ -5,7 +5,7 @@ import requests
 
 ACCEPTED_FORMATS = ["mp4", "webm"]  # Discord embeddable
 
-TWITTER_FORMATS = [".mp4", ".mov", ".webm"]
+TWITTER_VIDEO_FORMATS = [".mp4", ".mov", ".webm"]
 REDDIT_URL_PATTERNS = [
     r"https://.*720.mp4",
     r"https://.*480.mp4",
@@ -15,19 +15,20 @@ REDDIT_URL_PATTERNS = [
 
 
 def replace_twitter(url: str) -> str:
-    embed_service = "d.fxtwitter.com"
+    embed_api = "api.vxtwitter.com"
 
-    embed_url = (
-        url.replace("twitter.com", embed_service)
-        .replace("t.co", embed_service)
-        .replace("x.com", embed_service)
+    embed_api_url = (
+        url.replace("twitter.com", embed_api)
+        .replace("t.co", embed_api)
+        .replace("x.com", embed_api)
     )
-    embed_response = requests.get(embed_url, allow_redirects=False)
+    embed_response = requests.get(embed_api_url)
 
-    if embed_response.status_code == 302:
-        redirect_url = embed_response.headers["Location"]
-        if any(ext in redirect_url for ext in TWITTER_FORMATS):
-            return redirect_url
+    if embed_response.status_code == 200:
+        embed_urls = embed_response.json()["mediaURLs"]
+        for embed_url in embed_urls:
+            if any(ext in embed_url for ext in TWITTER_VIDEO_FORMATS):
+                return embed_url
 
 
 def replace_instagram(url: str) -> str:
